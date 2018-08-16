@@ -10,7 +10,7 @@ LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and R
   npm install twitter
 
 - Spotify
-  npm install spotify
+  npm install --save node-spotify-api
 
 - Request
   npm install request
@@ -18,25 +18,24 @@ LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and R
 - FS
   npm install fs
 
+- DotEnv
+  npm install dotenv
+
 #Get Started
 You can use below commands to perform certain actions respectively
 
 1. Get Tweets
    Retrieves your latest tweets (20Max).
-
-node liri.js my-tweets
+   Example: node liri.js my-tweets
 
 2. Get Song Info
    Retrieves song information for a particular track.
-
-node liri.js spotify-this-song "Kiki, do you love me"
+   Example: node liri.js spotify-this-song abc
 
 3. Get Movie Info
    Retrieves movie information for a movie.
-
-node liri.js movie-this "Revenge"
+   Example: node liri.js movie-this deadpool
 
 4. Get Random Info
    Gets random text inside a file and does what it says:
-
-node liri.js do-what-it-says
+   Example: node liri.js do-what-it-says
