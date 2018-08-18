@@ -25,7 +25,7 @@ LIRI is like iPhone's SIRI. However, while SIRI is a Speech Interpretation and R
 You can use below commands to perform certain actions respectively
 
 1. Get Tweets
-   Retrieves your latest tweets (20Max).
+   Retrieves my latest tweets (20Max).
    Example: node liri.js my-tweets
 
 2. Get Song Info

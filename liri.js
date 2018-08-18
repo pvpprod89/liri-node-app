@@ -31,7 +31,7 @@ function selectArgument(action, argument) {
       // If no song title provided, defaults to specific song.
       if (songTitle === "") {
         // lookupSpecificSong();
-        lookupSpecificSong("abc");
+        lookupSpecificSong("The Sign");
 
         // Else looks up song based on song title.
       } else {
@@ -86,6 +86,7 @@ function getMyTweets() {
 
   var params = {
     screen_name: "pvpwebdev",
+    // screen_name: process.argv[3],
     count: 20
   };
   // Shows up to last 20 tweets and when created in terminal.
@@ -98,7 +99,7 @@ function getMyTweets() {
       //   console.log(tweets);
       // }
       for (var i = 0; i < tweets.length; i++) {
-        console.log(" Tweet: " + tweets[i].text);
+        console.log("\n Tweet: " + tweets[i].text);
         console.log(" Created_at: " + tweets[i].created_at);
       }
     }
@@ -114,7 +115,8 @@ function getSongInfo(songTitle) {
   var spotify = new Spotify(keys.spotify);
   spotify.search({ type: "track", query: songTitle }, function(err, data) {
     if (err) {
-      console.log.error("Error occurred: " + err);
+      // console.log.error("Error occurred: " + err);
+      console.error("Error occurred: " + err);
       return;
     }
 
@@ -144,12 +146,14 @@ function lookupSpecificSong() {
   // Calls Spotify API to retrieve a specific track.
   var spotify = new Spotify(keys.spotify);
   // spotify.lookup({ type: "track", id: process.env.SPOTIFY_ID }, function(
-  spotify.search({ type: "track", query: "abc" }, function(err, data) {
+  spotify.search({ type: "track", query: "The Sign" }, function(err, data) {
     if (err) {
-      console.log.error("Error occurred: " + err);
-      return;
+      // console.log.error("Error occurred: " + err);
+      // console.error("Error occurred: " + err);
+      // return;
+      return console.error("Error occurred: " + err);
     }
-
+    // console.log(JSON.stringify(data));
     // Prints the Album name, Song name, Artist name, and Preview Url.
     console.log("Album: " + data.album.name);
     console.log("Song: " + data.name);
@@ -186,7 +190,8 @@ function getMovieInfo(movieTitle) {
       console.log("Movie Title: " + movie.Title);
       console.log("Release Year: " + movie.Year);
       console.log("IMDB Rating: " + movie.imdbRating);
-      console.log("Rotten Tomatoes Rating: " + movie.Ratings[2].Value);
+      // console.log("Rotten Tomatoes Rating: " + movie.Ratings[2].Value);
+      console.log("Rotten Tomatoes Rating: " + movie.Ratings[1].Value);
       console.log("Country Produced In: " + movie.Country);
       console.log("Language: " + movie.Language);
       console.log("Plot: " + movie.Plot);
@@ -202,7 +207,8 @@ function getMovieInfo(movieTitle) {
 function doWhatItSays() {
   fs.readFile("random.txt", "utf8", function(err, data) {
     if (err) {
-      console.log.error("Error occurred: " + err);
+      // console.log.error("Error occurred: " + err);
+      console.error("Error occurred: " + err);
     } else {
       // Creates array with data.
       var randomArray = data.split(",");
