@@ -153,12 +153,23 @@ function lookupSpecificSong() {
       // return;
       return console.error("Error occurred: " + err);
     }
-    // console.log(JSON.stringify(data));
-    // Prints the Album name, Song name, Artist name, and Preview Url.
-    console.log("Album: " + data.album.name);
-    console.log("Song: " + data.name);
-    console.log("Artist: " + data.artists[0].name);
-    console.log("Spotify Preview URL: " + data.preview_url);
+    var artistsArray = data.tracks.items[0].album.artists;
+
+    // Array to hold artist names, when more than one artist exists for a song.
+    var artistsNames = [];
+
+    // Pushes artists for track to array.
+    for (var i = 0; i < artistsArray.length; i++) {
+      artistsNames.push(artistsArray[i].name);
+    }
+
+    // Converts artists array to string, and makes it pretty.
+    var artists = artistsNames.join(", ");
+
+    console.log("Album: " + data.tracks.items[0].album.name);
+    console.log("Song: " + data.tracks.items[0].name);
+    console.log("Artist: " + artists);
+    console.log("Spotify Preview URL: " + data.tracks.items[0].preview_url);
   });
 }
 
